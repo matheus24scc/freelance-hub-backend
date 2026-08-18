@@ -19,14 +19,14 @@ export class PaymentsService {
 
   findAll() {
     return this.paymentsRepository.find({
-      relations: ['order', 'user'],
+      relations: { order: true, user: true },
     });
   }
 
   async findOne(id: number) {
     const payment = await this.paymentsRepository.findOne({
       where: { id },
-      relations: ['order', 'user'],
+      relations: { order: true, user: true },
     });
     if (!payment) {
       throw new NotFoundException(`Payment with ID ${id} not found`);

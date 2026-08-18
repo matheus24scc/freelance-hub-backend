@@ -32,14 +32,14 @@ export class MessagesService {
   }
 
   findAll(): Promise<Message[]> {
-    return this.messagesRepository.find({ relations: ['sender', 'receiver'] });
+    return this.messagesRepository.find({ relations: { sender: true, receiver: true } });
   }
 
   findOne(id: number): Promise<Message> {
-    return this.messagesRepository.findOne({ 
-      where: { id }, 
-      relations: ['sender', 'receiver'] 
-    });
+    return this.messagesRepository.findOne({
+      where: { id },
+      relations: { sender: true, receiver: true },
+    }) as Promise<Message>;
   }
 
   async update(id: number, updateMessageDto: UpdateMessageDto): Promise<Message> {

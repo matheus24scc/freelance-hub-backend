@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { User } from '../users/user.entity';
 import { Gig } from '../gigs/gig.entity';
-import { Payment } from './payment.entity';
+import { Payment } from '../payments/payment.entity';
 import { OrderStatus } from './order.status.enum';
 
 @Entity()

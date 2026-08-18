@@ -36,11 +36,11 @@ export class OrdersService {
   }
 
   findAll(): Promise<Order[]> {
-    return this.ordersRepository.find({ relations: ['client', 'freelancer', 'gig', 'payments'] });
+    return this.ordersRepository.find({ relations: { client: true, freelancer: true, gig: true, payments: true } });
   }
 
   findOne(id: number): Promise<Order> {
-    return this.ordersRepository.findOne({ where: { id }, relations: ['client', 'freelancer', 'gig', 'payments'] });
+    return this.ordersRepository.findOne({ where: { id }, relations: { client: true, freelancer: true, gig: true, payments: true } }) as Promise<Order>;
   }
 
   async update(id: number, updateOrderDto: UpdateOrderDto): Promise<Order> {
