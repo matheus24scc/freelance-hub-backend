@@ -1,4 +1,5 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, ExecutionContext } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -30,3 +31,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     return result;
   }
 }
+
+@Injectable()
+export class LocalAuthGuard extends AuthGuard('local') {}

@@ -25,4 +25,6 @@ export class CreateGigDto {
   @IsString()
   @IsOptional()
   tags?: string; // comma-separated tags
+
+  freelancerId: number;
 }

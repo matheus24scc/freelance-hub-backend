@@ -7,6 +7,8 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Notification } from '../notifications/notification.entity';
+import { Gig } from '../gigs/gig.entity';
+import { Order } from '../orders/order.entity';
 
 @Entity()
 export class User {
@@ -37,4 +39,13 @@ export class User {
 
   @OneToMany(() => Notification, (notification) => notification.user)
   notifications: Notification[];
+
+  @OneToMany(() => Gig, (gig) => gig.freelancer)
+  gigs: Gig[];
+
+  @OneToMany(() => Order, (order) => order.client)
+  ordersAsBuyer: Order[];
+
+  @OneToMany(() => Order, (order) => order.freelancer)
+  ordersAsSeller: Order[];
 }
